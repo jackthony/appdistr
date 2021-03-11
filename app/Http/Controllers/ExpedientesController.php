@@ -123,7 +123,9 @@ class ExpedientesController extends Controller
      */
     public function destroy($id)
     {
-        Expedientes::destroy($id);
+        $datosExpediente['atencion'] = "Aceptado";
+        Expedientes::where('id','=',$id)->update($datosExpediente);
+        //Expedientes::destroy($id);
         return redirect('expedientes');
     }
 }
